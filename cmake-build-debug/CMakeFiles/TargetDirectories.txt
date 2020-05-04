@@ -1,0 +1,3 @@
+/home/blackdesk/Desktop/BST/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/blackdesk/Desktop/BST/cmake-build-debug/CMakeFiles/BST.dir
+/home/blackdesk/Desktop/BST/cmake-build-debug/CMakeFiles/edit_cache.dir
