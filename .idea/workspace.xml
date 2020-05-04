@@ -12,9 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58e0b8b1-b14c-4b39-bffb-7b6fd17b390b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BST.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BST.dir/depend.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,6 +38,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -77,44 +76,48 @@
       <option name="presentableId" value="Default" />
       <updated>1588550333058</updated>
       <workItem from="1588550334437" duration="56000" />
-      <workItem from="1588551061177" duration="3338000" />
+      <workItem from="1588551061177" duration="4012000" />
+      <workItem from="1588556401975" duration="14000" />
+      <workItem from="1588591548624" duration="3204000" />
+      <workItem from="1588620094408" duration="2619000" />
     </task>
+    <task id="LOCAL-00001" summary="add: clear, erase subtree&#10;fixed: erase element with no children">
+      <created>1588554550628</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1588554550628</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="458" y="84" width="1060" height="944" key="CommitChangelistDialog2" timestamp="1588554506973">
-      <screen x="67" y="34" width="1853" height="1046" />
-    </state>
-    <state x="458" y="84" width="1060" height="944" key="CommitChangelistDialog2/67.34.1853.1046@67.34.1853.1046" timestamp="1588554506973" />
-    <state width="1797" height="327" key="GridCell.Tab.0.bottom" timestamp="1588554507036">
-      <screen x="67" y="34" width="1853" height="1046" />
-    </state>
-    <state width="1797" height="327" key="GridCell.Tab.0.bottom/67.34.1853.1046@67.34.1853.1046" timestamp="1588554507036" />
-    <state width="1797" height="327" key="GridCell.Tab.0.center" timestamp="1588554507035">
-      <screen x="67" y="34" width="1853" height="1046" />
-    </state>
-    <state width="1797" height="327" key="GridCell.Tab.0.center/67.34.1853.1046@67.34.1853.1046" timestamp="1588554507035" />
-    <state width="1797" height="327" key="GridCell.Tab.0.left" timestamp="1588554507035">
-      <screen x="67" y="34" width="1853" height="1046" />
-    </state>
-    <state width="1797" height="327" key="GridCell.Tab.0.left/67.34.1853.1046@67.34.1853.1046" timestamp="1588554507035" />
-    <state width="1797" height="327" key="GridCell.Tab.0.right" timestamp="1588554507036">
-      <screen x="67" y="34" width="1853" height="1046" />
-    </state>
-    <state width="1797" height="327" key="GridCell.Tab.0.right/67.34.1853.1046@67.34.1853.1046" timestamp="1588554507036" />
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add: clear, erase subtree&#10;fixed: erase element with no children" />
+    <option name="LAST_COMMIT_MESSAGE" value="add: clear, erase subtree&#10;fixed: erase element with no children" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>80</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="WindowStateProjectService">
+    <state x="458" y="84" width="1060" height="944" key="CommitChangelistDialog2" timestamp="1588554550452">
+      <screen x="67" y="34" width="1853" height="1046" />
+    </state>
+    <state x="458" y="84" width="1060" height="944" key="CommitChangelistDialog2/67.34.1853.1046@67.34.1853.1046" timestamp="1588554550452" />
+    <state width="1797" height="262" key="GridCell.Tab.0.bottom" timestamp="1588622696396">
+      <screen x="67" y="34" width="1853" height="1046" />
+    </state>
+    <state width="1797" height="262" key="GridCell.Tab.0.bottom/67.34.1853.1046@67.34.1853.1046" timestamp="1588622696396" />
+    <state width="1797" height="262" key="GridCell.Tab.0.center" timestamp="1588622696396">
+      <screen x="67" y="34" width="1853" height="1046" />
+    </state>
+    <state width="1797" height="262" key="GridCell.Tab.0.center/67.34.1853.1046@67.34.1853.1046" timestamp="1588622696396" />
+    <state width="1797" height="262" key="GridCell.Tab.0.left" timestamp="1588622696396">
+      <screen x="67" y="34" width="1853" height="1046" />
+    </state>
+    <state width="1797" height="262" key="GridCell.Tab.0.left/67.34.1853.1046@67.34.1853.1046" timestamp="1588622696396" />
+    <state width="1797" height="262" key="GridCell.Tab.0.right" timestamp="1588622696396">
+      <screen x="67" y="34" width="1853" height="1046" />
+    </state>
+    <state width="1797" height="262" key="GridCell.Tab.0.right/67.34.1853.1046@67.34.1853.1046" timestamp="1588622696396" />
   </component>
 </project>

@@ -147,44 +147,66 @@ private:
     } // fill vector with sorted elements
 
     void erase_node(Node *node) {
-        if (!node) {
+        if (!node || _root == nullptr) {
             return;
         }
-        if (!(node->left || node->right)) {
+
+
+        if (node == _root) {
+            if (!node->left && !node->right) {
+                delete node;
+                _root = nullptr;
+                --_size;
+                return;
+            }
+
+            if (node->left && !node->right) {
+                _root->key = _root->left->key;
+                erase_node(_root->left);
+                return;
+            }
+
+            if (!node->left && node->right) {
+                _root->key = _root->right->key;
+                erase_node(_root->right);
+                return;
+            }
+
+            Node *node_next = next_node(_root);
+            _root->key = node_next->key;
+            erase_node(node_next);
+            return;
+        }
+
+        if (!node->left && !node->right) { // no children
+            (node->parent->left == node ? node->parent->left : node->parent->right) = nullptr;
             delete node;
+            --_size;
             return;
         }
-        Node *replace_node;
-        if (node->left && node->right) {
-            replace_node = next_node(node);
-            if (replace_node->right) {
-                if (replace_node->parent->left == replace_node) {
-                    replace_node->parent->left = replace_node->right;
-                } else {
-                    replace_node->parent->right = replace_node->right;
-                }
-            } else {
-                if (replace_node->parent->left == replace_node) {
-                    replace_node->parent->left = nullptr;
-                } else {
-                    replace_node->parent->right = nullptr;
-                }
-            }
-        } else if (node->right) {
-            replace_node = node->right;
-        } else {
-            replace_node = node->left;
+
+        if (node->right) { // only right child
+            (node->parent->left == node ? node->parent->left : node->parent->right) = node->right;
+            node->right->parent = node->parent;
+            delete node;
+            --_size;
+            return;
         }
-        if (node->parent) {
-            if (node->parent->left == node) {
-                node->parent->left = replace_node;
-            } else {
-                node->parent->right = replace_node;
-            }
-            replace_node->parent = node->parent;
+
+        if (node->left) { // only left child
+            (node->parent->left == node ? node->parent->left : node->parent->right) = node->left;
+            node->left->parent = node->parent;
+            delete node;
+            --_size;
+            return;
         }
-        delete node;
-        --_size;
+
+        Node *node_next = next_node(node);
+        if (node_next) {
+            node->key = node_next->key;
+            erase_node(node_next);
+        }
+
     }
 
     void erase_subtree(Node *node) {
@@ -194,6 +216,7 @@ private:
             erase_node(node);
         }
     }
+
 
 };
 
@@ -215,9 +238,17 @@ int main() {
     std::cout << "\n";
 
     std::cout << "ERASE\n";
+    tree.erase(1);
     tree.erase(0);
     std::cout << "nullptr : " << (tree.find(0) == nullptr ? "nullptr" : std::to_string(*tree.find(0))) << "\n";
-    std::cout << "2 : " << tree.size() << "\n";
+    std::cout << "1 : " << tree.size() << "\n";
+
+    std::cout << "\n";
+    std::cout << "CLEAR\n";
+    tree.insert(10);
+    tree.insert(-10);
+    tree.clear();
+    std::cout << "0 : " << tree.size();
 
     return 0;
 }
