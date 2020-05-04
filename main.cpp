@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 #include <sstream>
-#include <cstddef>a
+#include <cstddef>
 
 template<typename T>
 class Tree {
@@ -10,12 +10,20 @@ public:
     using value_type = T;
     using size_type = std::size_t;
 
+    ~Tree() {
+        clear();
+    }
+
+    void clear() {
+        erase_subtree(_root);
+    }
+
     value_type size() const {
         return _size;
     } // nodes cnt
 
     value_type min() const {
-        Node *curr = root;
+        Node *curr = _root;
         while (curr->left) {
             curr = curr->left;
         }
@@ -23,7 +31,7 @@ public:
     }
 
     value_type max() const {
-        Node *curr = root;
+        Node *curr = _root;
         while (curr->right) {
             curr = curr->right;
         }
@@ -31,11 +39,11 @@ public:
     }
 
     value_type *find(const value_type &key) const {
-        return &find_node(root, key)->key;
+        return &find_node(_root, key)->key;
     } // nullptr if no value found
 
     value_type *next(const value_type &key) const {
-        Node *node = find_node(root, key);
+        Node *node = find_node(_root, key);
         if (node == nullptr) {
             std::stringstream error;
             error << "No value " << key << " in tree to find next!\n";
@@ -46,7 +54,7 @@ public:
     } // next value by no-decreasing order, nullptr if no value found;
 
     void insert(const value_type &key) {
-        Node *node = root;
+        Node *node = _root;
         Node *key_node = new Node(key);
         while (node) {
             key_node->parent = node;
@@ -63,20 +71,20 @@ public:
                 key_node->parent->left = key_node;
             }
         } else {
-            this->root = key_node;
+            this->_root = key_node;
         }
         ++this->_size;
     }
 
     void erase(const value_type &key) {
-        Node *node = find_node(key);
+        Node *node = find_node(_root, key);
         erase_node(node);
     }
 
     void get_ordered(std::vector<value_type> &data) const {
         data.clear();
         data.reserve(_size);
-        get_ordered(data, root);
+        get_ordered(data, _root);
     }
 
 
@@ -100,7 +108,7 @@ private:
     };
 
     size_type _size{0};
-    Node *root{nullptr};
+    Node *_root{nullptr};
 
     Node *find_node(Node *curr_node, const value_type &key) const {
         if (!curr_node) {
@@ -116,7 +124,7 @@ private:
     }
 
     Node *next_node(const Node *node) const {
-        Node *curr_node = find_node(root, node->key);
+        Node *curr_node = find_node(_root, node->key);
         if (curr_node->right) {
             curr_node = curr_node->right;
             while (curr_node->left) {
@@ -139,7 +147,10 @@ private:
     } // fill vector with sorted elements
 
     void erase_node(Node *node) {
-        if (!(node->left) || node->right) {
+        if (!node) {
+            return;
+        }
+        if (!(node->left || node->right)) {
             delete node;
             return;
         }
@@ -164,41 +175,49 @@ private:
         } else {
             replace_node = node->left;
         }
-        if (node->parent->left == node) {
-            node->parent->left = replace_node;
-        } else {
-            node->parent->right = replace_node;
+        if (node->parent) {
+            if (node->parent->left == node) {
+                node->parent->left = replace_node;
+            } else {
+                node->parent->right = replace_node;
+            }
+            replace_node->parent = node->parent;
         }
-        replace_node->parent = node->parent;
         delete node;
-    } // не разобарлся как это иначе написать...
+        --_size;
+    }
+
+    void erase_subtree(Node *node) {
+        if (node) {
+            erase_subtree(node->left);
+            erase_subtree(node->right);
+            erase_node(node);
+        }
+    }
 
 };
 
 int main() {
     Tree<int> tree;
-    tree.insert(1);
-    tree.insert(2);
+    std::cout << "INSERT & FIND\n";
     tree.insert(0);
-    tree.insert(-3);
-
-    std::cout << "find\n1 : ";
-    std::cout << *tree.find(1) << "\n";
-
-    std::cout << "max\n2 : ";
-    std::cout << tree.max() << "\n";
-
-    std::cout << "min\n-3 : ";
-    std::cout << tree.min() << "\n";
-
-    std::cout << "ordered\n-3 0 1 2 : ";
-    std::vector<int> data;
-    tree.get_ordered(data);
-    for (const auto &elem : data) {
-        std::cout << elem << " ";
-    }
+    tree.insert(1);
+    tree.insert(-1);
+    std::cout << "0 : " << (tree.find(0) == nullptr ? "nullptr" : std::to_string(*tree.find(0))) << "\n";
+    std::cout << "1 : " << (tree.find(1) == nullptr ? "nullptr" : std::to_string(*tree.find(1))) << "\n";
+    std::cout << "-1 : " << (tree.find(-1) == nullptr ? "nullptr" : std::to_string(*tree.find(-1))) << "\n";
+    std::cout << "nullptr : " << (tree.find(2) == nullptr ? "nullptr" : std::to_string(*tree.find(2))) << "\n";
     std::cout << "\n";
 
-    std::cout << "next\n" << "1 : " << (tree.next(0) == nullptr ? "nullptr" : std::to_string(*tree.next(0))) << "\n";
+    std::cout << "MIN & MAX\n";
+    std::cout << "-1 : " << tree.min() << "\n";
+    std::cout << "1 : " << tree.max() << "\n";
+    std::cout << "\n";
+
+    std::cout << "ERASE\n";
+    tree.erase(0);
+    std::cout << "nullptr : " << (tree.find(0) == nullptr ? "nullptr" : std::to_string(*tree.find(0))) << "\n";
+    std::cout << "2 : " << tree.size() << "\n";
+
     return 0;
 }
