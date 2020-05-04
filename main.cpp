@@ -5,25 +5,36 @@
 #include <cstddef>
 
 template<typename T>
-class Tree {
+class BST {
+private:
+    class Node;
+
 public:
     using value_type = T;
     using size_type = std::size_t;
+    using node = Node;
 
-    ~Tree() {
-        clear();
-    }
+    // constructors & destructor
+    BST() : root(nullptr) {};
 
-    void clear() {
-        erase_subtree(_root);
-    }
+    BST(Node *_root) : root(_root) {};
 
-    value_type size() const {
+    ~BST() { clear(); };
+
+    // member functions
+
+    void clear();           // erases all nodes
+    value_type size() const{
         return _size;
-    } // nodes cnt
+    }      // nodes counter
+
+
+
+
+
 
     value_type min() const {
-        Node *curr = _root;
+        Node *curr = root;
         while (curr->left) {
             curr = curr->left;
         }
@@ -31,7 +42,7 @@ public:
     }
 
     value_type max() const {
-        Node *curr = _root;
+        Node *curr = root;
         while (curr->right) {
             curr = curr->right;
         }
@@ -39,11 +50,15 @@ public:
     }
 
     value_type *find(const value_type &key) const {
-        return &find_node(_root, key)->key;
+        return &find_node(root, key)->key;
     } // nullptr if no value found
 
+    bool search(const value_type &key) const {
+        find(key) != nullptr;
+    }
+
     value_type *next(const value_type &key) const {
-        Node *node = find_node(_root, key);
+        Node *node = find_node(root, key);
         if (node == nullptr) {
             std::stringstream error;
             error << "No value " << key << " in tree to find next!\n";
@@ -54,8 +69,8 @@ public:
     } // next value by no-decreasing order, nullptr if no value found;
 
     void insert(const value_type &key) {
-        Node *node = _root;
-        Node *key_node = new Node(key);
+        Node *node = root;
+        Node *key_node = new Node{key};
         while (node) {
             key_node->parent = node;
             if (node->key < key) {
@@ -71,44 +86,37 @@ public:
                 key_node->parent->left = key_node;
             }
         } else {
-            this->_root = key_node;
+            this->root = key_node;
         }
         ++this->_size;
     }
 
     void erase(const value_type &key) {
-        Node *node = find_node(_root, key);
+        Node *node = find_node(root, key);
         erase_node(node);
     }
+
 
     void get_ordered(std::vector<value_type> &data) const {
         data.clear();
         data.reserve(_size);
-        get_ordered(data, _root);
+        get_ordered(data, root);
     }
 
 
 private:
     class Node {
     public:
-        int key;
-        Node *parent{nullptr};
-        Node *left{nullptr};
-        Node *right{nullptr};
+        value_type key;
+        Node *left = nullptr;
+        Node *right = nullptr;
+        Node *parent = nullptr;
 
-        explicit Node(const int key,
-                      Node *p = nullptr,
-                      Node *left = nullptr,
-                      Node *right = nullptr) :
-                key(key),
-                parent(p), left(left),
-                right(right) {
-        }
-
+        explicit Node(value_type key) : key(key) {}
     };
 
     size_type _size{0};
-    Node *_root{nullptr};
+    Node *root{nullptr};
 
     Node *find_node(Node *curr_node, const value_type &key) const {
         if (!curr_node) {
@@ -124,7 +132,7 @@ private:
     }
 
     Node *next_node(const Node *node) const {
-        Node *curr_node = find_node(_root, node->key);
+        Node *curr_node = find_node(root, node->key);
         if (curr_node->right) {
             curr_node = curr_node->right;
             while (curr_node->left) {
@@ -147,33 +155,33 @@ private:
     } // fill vector with sorted elements
 
     void erase_node(Node *node) {
-        if (!node || !_root) {
+        if (!node || !root) {
             return;
         }
 
 
-        if (node == _root) {
+        if (node == root) {
             if (!node->left && !node->right) {
                 delete node;
-                _root = nullptr;
+                root = nullptr;
                 --_size;
                 return;
             }
 
             if (node->left && !node->right) {
-                _root->key = _root->left->key;
-                erase_node(_root->left);
+                root->key = root->left->key;
+                erase_node(root->left);
                 return;
             }
 
             if (!node->left && node->right) {
-                _root->key = _root->right->key;
-                erase_node(_root->right);
+                root->key = root->right->key;
+                erase_node(root->right);
                 return;
             }
 
-            Node *node_next = next_node(_root);
-            _root->key = node_next->key;
+            Node *node_next = next_node(root);
+            root->key = node_next->key;
             erase_node(node_next);
             return;
         }
@@ -220,8 +228,19 @@ private:
 
 };
 
+template<typename T>
+void BST<T>::clear() {
+    erase_subtree(root);
+}
+
+template<typename T, typename value_type>
+value_type BST<T>::size() const {
+    return _size;
+} // nodes cnt
+
+
 int main() {
-    Tree<int> tree;
+    BST<int> tree;
     std::cout << "INSERT & FIND\n";
     tree.insert(0);
     tree.insert(1);
