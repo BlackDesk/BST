@@ -147,7 +147,7 @@ private:
     } // fill vector with sorted elements
 
     void erase_node(Node *node) {
-        if (!node || _root == nullptr) {
+        if (!node || !_root) {
             return;
         }
 

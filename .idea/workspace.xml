@@ -11,7 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58e0b8b1-b14c-4b39-bffb-7b6fd17b390b" name="Default Changelist" comment="">
+    <list default="true" id="58e0b8b1-b14c-4b39-bffb-7b6fd17b390b" name="Default Changelist" comment="Fix erase and add new tests">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
@@ -79,7 +79,7 @@
       <workItem from="1588551061177" duration="4012000" />
       <workItem from="1588556401975" duration="14000" />
       <workItem from="1588591548624" duration="3204000" />
-      <workItem from="1588620094408" duration="2619000" />
+      <workItem from="1588620094408" duration="3505000" />
     </task>
     <task id="LOCAL-00001" summary="add: clear, erase subtree&#10;fixed: erase element with no children">
       <created>1588554550628</created>
@@ -88,7 +88,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588554550628</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Fix erase and add new tests">
+      <created>1588622783464</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1588622783464</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -96,13 +103,14 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add: clear, erase subtree&#10;fixed: erase element with no children" />
-    <option name="LAST_COMMIT_MESSAGE" value="add: clear, erase subtree&#10;fixed: erase element with no children" />
+    <MESSAGE value="Fix erase and add new tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix erase and add new tests" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="458" y="84" width="1060" height="944" key="CommitChangelistDialog2" timestamp="1588554550452">
+    <state x="458" y="84" width="1060" height="944" key="CommitChangelistDialog2" timestamp="1588628668866">
       <screen x="67" y="34" width="1853" height="1046" />
     </state>
-    <state x="458" y="84" width="1060" height="944" key="CommitChangelistDialog2/67.34.1853.1046@67.34.1853.1046" timestamp="1588554550452" />
+    <state x="458" y="84" width="1060" height="944" key="CommitChangelistDialog2/67.34.1853.1046@67.34.1853.1046" timestamp="1588628668866" />
     <state width="1797" height="262" key="GridCell.Tab.0.bottom" timestamp="1588622696396">
       <screen x="67" y="34" width="1853" height="1046" />
     </state>
