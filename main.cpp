@@ -24,13 +24,7 @@ public:
     // member functions
 
     void clear();           // erases all nodes
-    value_type size() const{
-        return _size;
-    }      // nodes counter
-
-
-
-
+    value_type size() const;
 
 
     value_type min() const {
@@ -233,8 +227,8 @@ void BST<T>::clear() {
     erase_subtree(root);
 }
 
-template<typename T, typename value_type>
-value_type BST<T>::size() const {
+template<typename T>
+typename BST<T>::value_type BST<T>::size() const {
     return _size;
 } // nodes cnt
 
