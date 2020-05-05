@@ -293,7 +293,7 @@ bool BST<T>::isEmpty() const {
 }
 
 
-int main() {
+void test() {
     BST<int> tree;
     std::cout << "INSERT & FIND\n";
     tree.insert(0);
@@ -323,5 +323,9 @@ int main() {
     tree.clear();
     std::cout << "0 : " << tree.size();
 
+}
+
+int main() {
+    test();
     return 0;
 }
