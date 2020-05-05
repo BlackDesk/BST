@@ -80,7 +80,7 @@
       <workItem from="1588556401975" duration="14000" />
       <workItem from="1588591548624" duration="3204000" />
       <workItem from="1588620094408" duration="6328000" />
-      <workItem from="1588636905472" duration="4266000" />
+      <workItem from="1588636905472" duration="4731000" />
     </task>
     <task id="LOCAL-00001" summary="add: clear, erase subtree&#10;fixed: erase element with no children">
       <created>1588554550628</created>
@@ -110,7 +110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588705165413</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Finish separating definition &amp; declaration">
+      <created>1588708021782</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1588708021782</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -121,28 +128,29 @@
     <MESSAGE value="Fix erase and add new tests" />
     <MESSAGE value="Add Search(key)" />
     <MESSAGE value="Start separating declaration &amp; definition" />
-    <option name="LAST_COMMIT_MESSAGE" value="Start separating declaration &amp; definition" />
+    <MESSAGE value="Finish separating definition &amp; declaration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finish separating definition &amp; declaration" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="458" y="84" width="1060" height="944" key="CommitChangelistDialog2" timestamp="1588705165289">
+    <state x="458" y="84" width="1060" height="944" key="CommitChangelistDialog2" timestamp="1588708021720">
       <screen x="67" y="34" width="1853" height="1046" />
     </state>
-    <state x="458" y="84" width="1060" height="944" key="CommitChangelistDialog2/67.34.1853.1046@67.34.1853.1046" timestamp="1588705165289" />
-    <state width="1797" height="327" key="GridCell.Tab.0.bottom" timestamp="1588631494940">
+    <state x="458" y="84" width="1060" height="944" key="CommitChangelistDialog2/67.34.1853.1046@67.34.1853.1046" timestamp="1588708021720" />
+    <state width="1797" height="245" key="GridCell.Tab.0.bottom" timestamp="1588708461163">
       <screen x="67" y="34" width="1853" height="1046" />
     </state>
-    <state width="1797" height="327" key="GridCell.Tab.0.bottom/67.34.1853.1046@67.34.1853.1046" timestamp="1588631494940" />
-    <state width="1797" height="327" key="GridCell.Tab.0.center" timestamp="1588631494939">
+    <state width="1797" height="245" key="GridCell.Tab.0.bottom/67.34.1853.1046@67.34.1853.1046" timestamp="1588708461163" />
+    <state width="1797" height="245" key="GridCell.Tab.0.center" timestamp="1588708461163">
       <screen x="67" y="34" width="1853" height="1046" />
     </state>
-    <state width="1797" height="327" key="GridCell.Tab.0.center/67.34.1853.1046@67.34.1853.1046" timestamp="1588631494939" />
-    <state width="1797" height="327" key="GridCell.Tab.0.left" timestamp="1588631494939">
+    <state width="1797" height="245" key="GridCell.Tab.0.center/67.34.1853.1046@67.34.1853.1046" timestamp="1588708461163" />
+    <state width="1797" height="245" key="GridCell.Tab.0.left" timestamp="1588708461163">
       <screen x="67" y="34" width="1853" height="1046" />
     </state>
-    <state width="1797" height="327" key="GridCell.Tab.0.left/67.34.1853.1046@67.34.1853.1046" timestamp="1588631494939" />
-    <state width="1797" height="327" key="GridCell.Tab.0.right" timestamp="1588631494939">
+    <state width="1797" height="245" key="GridCell.Tab.0.left/67.34.1853.1046@67.34.1853.1046" timestamp="1588708461163" />
+    <state width="1797" height="245" key="GridCell.Tab.0.right" timestamp="1588708461163">
       <screen x="67" y="34" width="1853" height="1046" />
     </state>
-    <state width="1797" height="327" key="GridCell.Tab.0.right/67.34.1853.1046@67.34.1853.1046" timestamp="1588631494939" />
+    <state width="1797" height="245" key="GridCell.Tab.0.right/67.34.1853.1046@67.34.1853.1046" timestamp="1588708461163" />
   </component>
 </project>

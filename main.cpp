@@ -41,7 +41,9 @@ public:
     value_type *find(const value_type &key) const;
     // pointer on key if is exists or nullptr
 
-    [[nodiscard]] bool search(const value_type &key) const;
+    [[nodiscard]] bool isEmpty() const;
+
+    [[nodiscard]] bool contains(const value_type &key) const;
     // key existing flag
 
     [[nodiscard]] value_type *next(const value_type &key) const;
@@ -122,7 +124,7 @@ T *BST<T>::find(const value_type &key) const {
 }
 
 template<typename T>
-bool BST<T>::search(const value_type &key) const {
+bool BST<T>::contains(const value_type &key) const {
     return find(key) != nullptr;
 }
 
@@ -283,6 +285,11 @@ void BST<T>::erase_subtree(BST::Node *node) {
         erase_subtree(node->right);
         erase_node(node);
     }
+}
+
+template<typename T>
+bool BST<T>::isEmpty() const {
+    return size() == 0;
 }
 
 
