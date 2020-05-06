@@ -12,14 +12,18 @@ private:
 public:
     using value_type = T;
     using size_type = std::size_t;
-    using node = Node;
 
 
     // CONSTRUCTORS & DESTRUCTOR
 
     BST() : root(nullptr) {};
 
+    BST(std::initializer_list<value_type> init);
+
     explicit BST(Node *_root) : root(_root) {};
+
+    template<typename ForwardIt>
+    BST(const ForwardIt &first, const ForwardIt &last);
 
     ~BST() { clear(); };
 
@@ -290,6 +294,23 @@ void BST<T>::erase_subtree(BST::Node *node) {
 template<typename T>
 bool BST<T>::isEmpty() const {
     return size() == 0;
+}
+
+template<typename T>
+BST<T>::BST(std::initializer_list<value_type> init) {
+    for (const auto &elem : init) {
+        insert(elem);
+    }
+}
+
+template<typename T>
+template<typename ForwardIt>
+BST<T>::BST(const ForwardIt &first, const ForwardIt &last) {
+    ForwardIt it = first;
+    while (it != last) {
+        insert(*it);
+        ++it;
+    }
 }
 
 

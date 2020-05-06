@@ -82,6 +82,7 @@
       <workItem from="1588620094408" duration="6328000" />
       <workItem from="1588636905472" duration="4731000" />
       <workItem from="1588709588677" duration="24000" />
+      <workItem from="1588729523153" duration="598000" />
     </task>
     <task id="LOCAL-00001" summary="add: clear, erase subtree&#10;fixed: erase element with no children">
       <created>1588554550628</created>
@@ -153,5 +154,9 @@
       <screen x="67" y="34" width="1853" height="1046" />
     </state>
     <state width="1797" height="245" key="GridCell.Tab.0.right/67.34.1853.1046@67.34.1853.1046" timestamp="1588708461163" />
+    <state x="572" y="45" width="840" height="1034" key="search.everywhere.popup" timestamp="1588729732151">
+      <screen x="67" y="34" width="1853" height="1046" />
+    </state>
+    <state x="572" y="45" width="840" height="1034" key="search.everywhere.popup/67.34.1853.1046@67.34.1853.1046" timestamp="1588729732151" />
   </component>
 </project>
