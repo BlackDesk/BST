@@ -45,7 +45,7 @@ public:
     value_type *find(const value_type &key) const;
     // pointer on key if is exists or nullptr
 
-    [[nodiscard]] bool isEmpty() const;
+    [[nodiscard]] bool empty() const;
 
     [[nodiscard]] bool contains(const value_type &key) const;
     // key existing flag
@@ -71,6 +71,14 @@ private:
         Node *right = nullptr;
         Node *parent = nullptr;
 
+        [[nodiscard]] bool isLeft() const {
+            return this->parent && this->parent->left == this;
+        }
+
+        [[nodiscard]] bool isRight() const {
+            return this->parent && this->parent->right == this;
+        }
+
         explicit Node(value_type key) : key(key) {}
     };
 
@@ -91,6 +99,8 @@ private:
 
     void erase_subtree(Node *node);
     // erases subtree with particular root
+
+    void insert_node(Node *_root, Node *node);
 
 };
 
@@ -124,7 +134,7 @@ T BST<T>::max() const {
 
 template<typename T>
 T *BST<T>::find(const value_type &key) const {
-    return nullptr;
+    return &find_node(root, key)->key;
 }
 
 template<typename T>
@@ -146,26 +156,9 @@ T *BST<T>::next(const value_type &key) const {
 
 template<typename T>
 void BST<T>::insert(const value_type &key) {
-    Node *node = root;
-    Node *key_node = new Node{key};
-    while (node) {
-        key_node->parent = node;
-        if (node->key < key) {
-            node = node->right;
-        } else {
-            node = node->left;
-        }
-    }
-    if (key_node->parent) {
-        if (key_node->parent->key < key_node->key) {
-            key_node->parent->right = key_node;
-        } else {
-            key_node->parent->left = key_node;
-        }
-    } else {
-        this->root = key_node;
-    }
-    ++this->_size;
+    Node *node = new Node(key);
+    insert_node(root, node);
+    ++_size;
 }
 
 template<typename T>
@@ -292,7 +285,7 @@ void BST<T>::erase_subtree(BST::Node *node) {
 }
 
 template<typename T>
-bool BST<T>::isEmpty() const {
+bool BST<T>::empty() const {
     return size() == 0;
 }
 
@@ -310,6 +303,28 @@ BST<T>::BST(const ForwardIt &first, const ForwardIt &last) {
     while (it != last) {
         insert(*it);
         ++it;
+    }
+}
+
+template<typename T>
+void BST<T>::insert_node(BST::Node *_root, BST::Node *node) {
+    if (!root) {
+        root = node;
+        return;
+    }
+    if (_root) {
+        node->parent = _root;
+        if (_root->key < node->key) {
+            insert_node(_root->right, node);
+        } else {
+            insert_node(_root->left, node);
+        }
+    } else {
+        if (node->parent->key > node->key) {
+            node->parent->left = node;
+        } else {
+            node->parent->right = node;
+        }
     }
 }
 
